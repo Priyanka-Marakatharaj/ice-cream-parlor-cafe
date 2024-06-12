@@ -1,0 +1,27 @@
+
+### Documentation of the Code
+
+In `app.py` and `create_tables.py`, add docstrings to document the functions.
+
+```python
+import sqlite3
+
+def add_seasonal_flavors_offering(name, ingredients):
+    """
+    Adds a new seasonal flavor to the database.
+    
+    :param name: The name of the flavor.
+    :param ingredients: The ingredients of the flavor.
+    """
+    conn = sqlite3.connect('ice_cream_parlor.db')
+    c = conn.cursor()
+    c.execute('INSERT INTO seasonal_flavors_offering (name, ingredients) VALUES (?, ?)', (name, ingredients))
+    conn.commit()
+    conn.close()
+
+def add_ingredient(name, quantity):
+    """
+    Adds a new ingredient to the inventory.
+    
+    :param name: The name of the ingredient.
+    :param quantity: The quantity
